@@ -24,10 +24,6 @@ public:
 	}
 	void CheckValidity()
 	{
-		/*if (width <= 0)
-			throw runtime_error("Invalid width.");
-		if (height <= 0)
-			throw runtime_error("Invalid height.");*/
 		if (width <= 0 || height <= 0)
 			throw runtime_error("One of more invalid sides.");
 	}

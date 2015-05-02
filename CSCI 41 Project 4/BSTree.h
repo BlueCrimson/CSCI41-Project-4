@@ -24,4 +24,5 @@ public:
 protected:
 	TreeNode<T> * FindMin(TreeNode<T> *node);
 	TreeNode<T> * FindMax(TreeNode<T> *node);
+	bool isEqual(double i, double j);
 };

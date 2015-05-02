@@ -16,12 +16,6 @@ protected:
 public:
 	void CheckValidity()
 	{
-		/*
-		if (a <= 0 || b <= 0 || c <= 0 || (a + b <= c) || (b + c <= a) || (c + a <= b))
-			return false;
-		else
-			return true;
-		*/
 		if (a <= 0 || b <= 0 || c <= 0 || (a + b <= c) || (b + c <= a) || (c + a <= b))
 			throw runtime_error("One or more invalid sides.");
 	}

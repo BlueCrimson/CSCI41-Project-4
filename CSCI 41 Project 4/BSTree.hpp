@@ -84,7 +84,8 @@ TreeNode<T> *BSTree<T>::Delete(T data, TreeNode<T> *node)
 	return node;
 }
 
-/*bool TreeNode<T>::isEqual(double i, double j)
+template <typename T>
+bool BSTree<T>::isEqual(double i, double j)
 {
 	const double dEpsilon = 0.0001;
 	double x = fabs(i - j);
@@ -93,5 +94,5 @@ TreeNode<T> *BSTree<T>::Delete(T data, TreeNode<T> *node)
 		return true;
 	else
 		return false;
-}*/
+}
 

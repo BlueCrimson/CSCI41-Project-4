@@ -17,13 +17,13 @@ using namespace std;
 BSTree<double> *RectTree = new BSTree<double>();
 BSTree<double> *TrglTree = new BSTree<double>();
 
-void PrintAreaInOrder(TreeNode<double> *node)
+void PrintRectInOrder(TreeNode<double> *node)
 {
 	if (node == NULL)
 		return;
-	PrintAreaInOrder(node->GetLeft());
+	PrintRectInOrder(node->GetLeft());
 	cout << node->GetData() << endl;
-	PrintAreaInOrder(node->GetRight());
+	PrintRectInOrder(node->GetRight());
 }
 
 void PromptRectArea()
@@ -77,15 +77,13 @@ void ReadRectData()
 	}
 }
 
-/*
-void PrintTrglArea()
+void PrintTrglInOrder(TreeNode<double> *node)
 {
-	Node* curr = TrglList->head;
-	while (curr != 0)
-	{
-		curr->PrintNodeData();
-		curr = curr->GetNext();
-	}
+	if (node == NULL)
+		return;
+	PrintTrglInOrder(node->GetLeft());
+	cout << node->GetData() << endl;
+	PrintTrglInOrder(node->GetRight());
 }
 
 void PromptTrglArea()
@@ -93,22 +91,20 @@ void PromptTrglArea()
 	double area;
 	cout << "Select an area value to delete: ";
 	cin >> area;
-	Node* node = TrglList->Search(area);
 	try
 	{
-		TrglList->RemoveNode(node);
+		RectTree->Delete(area, TrglTree->root);
 		cout << "Area found and deleted." << endl;
 	}
-	catch(runtime_error &err)
+	catch (runtime_error &err)
 	{
 		cout << "Area not found." << endl;
 	}
-
 }
 
 void ReadTrglData()
 {
-	if (TrglList->head != 0)
+	if (TrglTree->root != 0)
 		return;
 
 	ifstream inFileTrgl;
@@ -124,16 +120,15 @@ void ReadTrglData()
 		a = 0; b = 0; c = 0;
 		inFileTrgl >> a >> b >> c;
 		trgl.SetSides(a, b, c);
-		try 
-		{ 
+		try
+		{
 			trgl.CheckValidity();
-			TrglNode* node = new TrglNode(trgl);
-			if (TrglList->head == 0)
-				TrglList->head = node;
-			else 
-				TrglList->InsertInOrder(node);
+			if (TrglTree->root == 0)
+				TrglTree->root = new TreeNode<double>(trgl.GetArea());
+			else
+				TrglTree->Insert(trgl.GetArea(), TrglTree->root);
 		}
-		catch(runtime_error &err)
+		catch (runtime_error &err)
 		{
 			cout << err.what() << endl;
 		}
@@ -141,7 +136,7 @@ void ReadTrglData()
 			break;
 	}
 }
-*/
+
 int _tmain(int argc, _TCHAR* argv[])
 {
 	
@@ -167,10 +162,10 @@ int _tmain(int argc, _TCHAR* argv[])
 				system("PAUSE");
 				exit(1);
 			}
-			PrintAreaInOrder(RectTree->root);
+			PrintRectInOrder(RectTree->root);
 			PromptRectArea();
 		}
-		/*else if(option == '2')
+		else if(option == '2')
 		{
 			try
 			{
@@ -182,7 +177,7 @@ int _tmain(int argc, _TCHAR* argv[])
 				system("PAUSE");
 				exit(1);
 			}
-			PrintTrglArea();
+			PrintTrglInOrder(TrglTree->root);
 			PromptTrglArea();
 		}
 		else if(option == '3')
@@ -193,7 +188,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		else
 		{
 			cout << "Invalid option." << endl;
-		}*/
+		}
 	}
 	system("PAUSE");
 	return 0;
