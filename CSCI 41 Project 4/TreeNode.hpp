@@ -17,11 +17,23 @@ TreeNode<T>::TreeNode(T value) : data(value), left(0), right(0)
 }
 
 template <typename T>
-int TreeNode<T>::Compare(TreeNode *node)
+bool TreeNode<T>::isEqual(double i, double j)
 {
-	if (data == node->data)
+	const double dEpsilon = 0.0001;
+	double x = fabs(i - j);
+	double y = dEpsilon * fabs(i);
+	if (x <= y)
+		return true;
+	else
+		return false;
+}
+
+template <typename T>
+int TreeNode<T>::Compare(T value)
+{
+	if (isEqual(value, data))
 		return 0;
-	else if (data < node->data)
+	else if (value < data)
 		return -1;
 	else
 		return 1;

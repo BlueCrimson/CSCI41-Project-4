@@ -18,7 +18,7 @@ public:
 	BSTree();
 	TreeNode<T> * Search(T data, TreeNode<T> *node);
 	TreeNode<T> * Insert(T data, TreeNode<T> *node);
-	TreeNode<T> * Delete(T data, TreeNode<T> *node);
+	TreeNode<T> * Delete(T data, TreeNode<T> *node, bool &nodeDeleted);
 	TreeNode<T> *root;
 
 protected:

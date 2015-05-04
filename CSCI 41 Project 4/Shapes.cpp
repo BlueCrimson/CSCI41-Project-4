@@ -28,15 +28,21 @@ void PrintRectInOrder(TreeNode<double> *node)
 
 void PromptRectArea()
 {
-	double area; 
+	double area;
+	bool nodeDeleted;
+
 	cout << "Select an area value to delete: ";
 	cin >> area;
+	
 	try
 	{
-		RectTree->Delete(area, RectTree->root);
-		cout << "Area found and deleted." << endl;
+		RectTree->Delete(area, RectTree->root, nodeDeleted);
+		if (nodeDeleted)
+			cout << "Area found and deleted." << endl;
+		else
+			cout << "Area not found." << endl;
 	}
-	catch(runtime_error &err)
+	catch (runtime_error &err)
 	{
 		cout << "Area not found." << endl;
 	}
@@ -89,12 +95,18 @@ void PrintTrglInOrder(TreeNode<double> *node)
 void PromptTrglArea()
 {
 	double area;
+	bool nodeDeleted;
+
 	cout << "Select an area value to delete: ";
 	cin >> area;
+
 	try
 	{
-		RectTree->Delete(area, TrglTree->root);
-		cout << "Area found and deleted." << endl;
+		RectTree->Delete(area, TrglTree->root, nodeDeleted);
+		if (nodeDeleted)
+			cout << "Area found and deleted." << endl;
+		else
+			cout << "Area not found." << endl;
 	}
 	catch (runtime_error &err)
 	{

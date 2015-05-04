@@ -12,7 +12,7 @@ class TreeNode
 public:
 	TreeNode();
 	TreeNode(T value);
-	int Compare(TreeNode *node);
+	int Compare(T value);
 	TreeNode *GetLeft();
 	void SetLeft(TreeNode *node);
 	TreeNode *GetRight();
@@ -25,4 +25,5 @@ private:
 	TreeNode *left;
 	TreeNode *right;
 	T data;
+	bool isEqual(double i, double j);
 };
