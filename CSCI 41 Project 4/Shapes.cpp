@@ -2,7 +2,7 @@
 // Programmer: Kevin Ngo
 // Class: CSCI 41
 // Instructor: Dr. Ming Li
-// Project 3: Linked Lists, Exception Handling, Pointers
+// Project 4: Binary Search Tree, Exception Handling, Pointers, Template
 //----------------------------------------------------------------------------------------//
 
 #include "stdafx.h"
